@@ -8,18 +8,16 @@ def standardize_features(X):
 
     return (X - mean) / std
 
-
 def prepare_subject(X, y, remove_negative=False):
-    """Prepare one subject exactly for the ML experiments."""
+    """Match the reference preprocessing order."""
+    X = standardize_features(X)
+
     if remove_negative:
         mask = y >= 0
         X = X[mask]
         y = y[mask]
 
-    X = standardize_features(X)
-
     return X, y
-
 
 def get_feature_sets(X):
     """Return the four feature configurations used in the paper."""
