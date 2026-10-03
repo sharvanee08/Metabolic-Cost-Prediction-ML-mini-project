@@ -49,21 +49,14 @@ Explained variance: 99.14%
 RANDOM FOREST EXTENSION
 =======================
 
-Hyperparameters:
-n_estimators = 200
-max_depth = None
-5-fold cross-validation
-random_state = 42
-Metric = MSE
+Subject 1:
+- all: MSE = 0.011943
+- step_emg: MSE = 0.012271
+- step_only: MSE = 0.015741
+- emg_only: MSE = 0.013418
 
-Subject 1
-all        : MSE = 0.011943
-step_emg   : MSE = 0.012271
-step_only  : MSE = 0.015741
-emg_only   : MSE = 0.013418
-
-Subject 2
-all        : MSE = 0.011319
-step_emg   : MSE = 0.011045
-step_only  : MSE = 0.015569
-emg_only   : MSE = 0.013938
+Subject 2:
+- all: MSE = 0.011319
+- step_emg: MSE = 0.011045
+- step_only: MSE = 0.015569
+- emg_only: MSE = 0.013938
