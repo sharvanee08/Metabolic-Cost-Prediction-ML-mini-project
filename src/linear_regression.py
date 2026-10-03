@@ -8,21 +8,24 @@ def cross_validate_lasso(
     X,
     y,
     alphas=None,
-    n_splits=10,
+    n_splits=5,
     random_state=42,
 ):
-    """LASSO regression with 10-fold CV."""
+    """LASSO regression with 5-fold cross-validation."""
 
+    # Match the reference implementation
     if alphas is None:
-        alphas = np.logspace(-4, 1, 30)
+        alphas = np.logspace(-5, -1, 25)
 
+    # Randomize samples before creating CV folds,
+    # matching the reference experiment structure.
     rng = np.random.default_rng(random_state)
 
-    # Randomize samples before CV, matching the experiment.
     permutation = rng.permutation(len(y))
     X = X[permutation]
     y = y[permutation]
 
+    # Reference uses K = 5
     kfold = KFold(
         n_splits=n_splits,
         shuffle=False,

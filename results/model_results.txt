@@ -2,19 +2,19 @@ PERSON 2 RESULTS
 =================
 
 LINEAR REGRESSION (LASSO)
--------------------------
+==========================
 
 Subject 1
-all       : alpha = 0.007880, MSE = 0.011943
-step_emg  : alpha = 0.007880, MSE = 0.014002
-step_only : alpha = 0.005298, MSE = 0.019316
-emg_only  : alpha = 0.007880, MSE = 0.016886
+all        : alpha = 0.010000, MSE = 0.012260
+step_emg   : alpha = 0.006813, MSE = 0.014437
+step_only  : alpha = 0.006813, MSE = 0.019794
+emg_only   : alpha = 0.006813, MSE = 0.017389
 
 Subject 2
-all       : alpha = 0.002395, MSE = 0.008720
-step_emg  : alpha = 0.001610, MSE = 0.009000
-step_only : alpha = 0.000728, MSE = 0.019335
-emg_only  : alpha = 0.005298, MSE = 0.015401
+all        : alpha = 0.002154, MSE = 0.008769
+step_emg   : alpha = 0.001468, MSE = 0.009436
+step_only  : alpha = 0.001468, MSE = 0.019450
+emg_only   : alpha = 0.004642, MSE = 0.015786
 
 
 NEURAL NETWORK
@@ -47,16 +47,23 @@ Explained variance: 99.14%
 
 
 RANDOM FOREST EXTENSION
------------------------
+=======================
+
+Hyperparameters:
+n_estimators = 200
+max_depth = None
+5-fold cross-validation
+random_state = 42
+Metric = MSE
 
 Subject 1
-all       : MSE = 0.013249
-step_emg  : MSE = 0.013606
-step_only : MSE = 0.017421
-emg_only  : MSE = 0.014606
+all        : MSE = 0.011943
+step_emg   : MSE = 0.012271
+step_only  : MSE = 0.015741
+emg_only   : MSE = 0.013418
 
 Subject 2
-all       : MSE = 0.011573
-step_emg  : MSE = 0.011426
-step_only : MSE = 0.016239
-emg_only  : MSE = 0.014325
+all        : MSE = 0.011319
+step_emg   : MSE = 0.011045
+step_only  : MSE = 0.015569
+emg_only   : MSE = 0.013938

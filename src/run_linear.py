@@ -3,12 +3,16 @@ from preprocessing import prepare_subject, get_feature_sets
 from linear_regression import cross_validate_lasso
 
 
-def run_subject(name, X, y):
+def run_subject(name, X, y, remove_negative=False):
     print("\n" + "=" * 50)
     print(name)
     print("=" * 50)
 
-    X, y = prepare_subject(X, y, remove_negative=True)
+    X, y = prepare_subject(
+        X,
+        y,
+        remove_negative=remove_negative
+    )
 
     feature_sets = get_feature_sets(X)
 
@@ -18,7 +22,7 @@ def run_subject(name, X, y):
         _, best = cross_validate_lasso(
             X_features,
             y,
-            n_splits=10,
+            n_splits=5,
             random_state=42,
         )
 
@@ -35,10 +39,12 @@ if __name__ == "__main__":
         "Subject 1",
         data["subject_1_X"],
         data["subject_1_y"],
+        remove_negative=True,
     )
 
     run_subject(
         "Subject 2",
         data["subject_2_X"],
         data["subject_2_y"],
+        remove_negative=False,
     )
