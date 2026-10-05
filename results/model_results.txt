@@ -1,0 +1,28 @@
+NEURAL NETWORK RESULTS
+======================
+
+Subject 1
+all       : 9 neurons, MSE = 0.014007
+step_emg  : 11 neurons, MSE = 0.011953
+step_only : 4 neurons, MSE = 0.016173
+emg_only  : 5 neurons, MSE = 0.015813
+
+Subject 2
+all       : 5 neurons, MSE = 0.008064
+step_emg  : 13 neurons, MSE = 0.009076
+step_only : 13 neurons, MSE = 0.015513
+emg_only  : 13 neurons, MSE = 0.013591
+
+
+FEATURE SELECTION / PCA
+=======================
+
+Subject 1
+
+Forward selection (10 features tested):
+26, 18, 24, 2, 7, 3, 15, 8, 6, 13
+
+PCA:
+Original features : 29
+PCA components    : 24
+Explained variance: 99.14%
