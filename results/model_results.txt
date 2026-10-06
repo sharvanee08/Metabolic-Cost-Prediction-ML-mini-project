@@ -1,5 +1,23 @@
-NEURAL NETWORK RESULTS
-======================
+MODEL RESULTS
+=================
+
+LINEAR REGRESSION (LASSO)
+=========================
+
+Subject 1
+all      : alpha = 0.010000, MSE = 0.012260
+step_emg : alpha = 0.006813, MSE = 0.014437
+step_only: alpha = 0.006813, MSE = 0.019794
+emg_only : alpha = 0.006813, MSE = 0.017389
+
+Subject 2
+all      : alpha = 0.002154, MSE = 0.008769
+step_emg : alpha = 0.001468, MSE = 0.009436
+step_only: alpha = 0.001468, MSE = 0.019450
+emg_only : alpha = 0.004642, MSE = 0.015786
+
+NEURAL NETWORK
+--------------
 
 Subject 1
 all       : 9 neurons, MSE = 0.014007
@@ -15,10 +33,9 @@ emg_only  : 13 neurons, MSE = 0.013591
 
 
 FEATURE SELECTION / PCA
-=======================
+-----------------------
 
 Subject 1
-
 Forward selection (10 features tested):
 26, 18, 24, 2, 7, 3, 15, 8, 6, 13
 
@@ -26,3 +43,19 @@ PCA:
 Original features : 29
 PCA components    : 24
 Explained variance: 99.14%
+
+
+RANDOM FOREST EXTENSION
+=======================
+
+Subject 1:
+- all: MSE = 0.011943
+- step_emg: MSE = 0.012271
+- step_only: MSE = 0.015741
+- emg_only: MSE = 0.013418
+
+Subject 2:
+- all: MSE = 0.011319
+- step_emg: MSE = 0.011045
+- step_only: MSE = 0.015569
+- emg_only: MSE = 0.013938
