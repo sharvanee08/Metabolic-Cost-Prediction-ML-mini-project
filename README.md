@@ -135,8 +135,6 @@ Metabolic-Cost-Prediction-ML-mini-project/
 ├── data/
 │   └── processed_data.mat
 │
-├── figures/
-│
 ├── results/
 │   └── model_results.txt
 │
