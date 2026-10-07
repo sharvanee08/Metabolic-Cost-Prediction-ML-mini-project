@@ -4,57 +4,58 @@ Reproduction and extension of the paper:
 
 **"Predicting Metabolic Cost During Human-in-the-Loop Optimization"**
 
-This project reproduces the machine learning methods described in the reference paper and extends the work with an additional machine learning model.
+This project reproduces the main machine learning methodology described in the reference paper and extends it with an additional machine learning model.
 
 ## Project Overview
 
 The goal of this project is to predict human metabolic cost from biomechanical and EMG-related features collected during human-in-the-loop optimization experiments.
 
-The original dataset contains measurements from two subjects, with 29 input features and a metabolic-cost target.
+The dataset contains measurements from two subjects, with 29 input features and a metabolic-cost target.
 
-Our project focuses on:
+The project focuses on:
 
 1. Reproducing the machine learning approaches described in the reference paper.
 2. Evaluating different feature configurations.
 3. Performing feature selection and dimensionality reduction.
-4. Extending the original work with an additional machine learning model.
+4. Extending the work with an additional machine learning model.
 
 ## Reference Paper
 
 **Predicting Metabolic Cost During Human-in-the-Loop Optimization**  
 Eley Ng and Erez Krimsky, CS229, 2018.
 
-Reference:
+Reference paper:
+
 https://cs229.stanford.edu/proj2018/report/11.pdf
 
 ## Models
 
-### Reproduction Models
+### LASSO Linear Regression
 
-The project implements the following approaches from the reference methodology:
+- L1-regularized linear regression
+- 10-fold cross-validation for regularization selection
+- Evaluated using Mean Squared Error (MSE)
 
-- **LASSO Linear Regression**
-  - L1-regularized linear regression
-  - 10-fold cross-validation for regularization selection
+### Neural Network
 
-- **Neural Network**
-  - Single hidden-layer architecture
-  - `tanh` activation
-  - Cross-validation to select the number of hidden neurons
+- Single hidden-layer neural network
+- `tanh` activation
+- Linear output
+- Cross-validation to select the number of hidden neurons
 
-- **Forward Stepwise Feature Selection**
-  - Iteratively selects features based on cross-validation performance
+### Forward Stepwise Feature Selection
 
-- **PCA**
-  - Dimensionality reduction after feature normalization
-  - Components are selected based on explained variance
+Features are selected iteratively based on cross-validation performance.
 
-### Extension Model
+### PCA
 
-- **Random Forest Regression**
-  - Added as an additional model beyond the approaches used in the reference paper
-  - Evaluated using cross-validation
-  - Results are compared with the reproduction models
+Principal Component Analysis is used for dimensionality reduction after feature normalization.
+
+### Random Forest Extension
+
+Random Forest Regression is included as the additional machine learning model for the project extension.
+
+The Random Forest model is evaluated using cross-validation and compared with the reproduced models.
 
 ## Feature Configurations
 
@@ -65,7 +66,7 @@ The models are evaluated using four feature configurations:
 - **Step only**
 - **EMG only**
 
-The original dataset contains 29 features, including:
+The 29 input features include:
 
 - Force/step-related features
 - Step timing and width
@@ -74,16 +75,20 @@ The original dataset contains 29 features, including:
 
 ## Dataset
 
-The project uses the processed dataset provided with the reference project.
-
-The processed data contains measurements for two subjects:
+The processed dataset contains data from two subjects:
 
 - Subject 1
 - Subject 2
 
 Each subject contains approximately 180 samples and 29 input features.
 
-The metabolic-cost measurements are used as the prediction target.
+The metabolic-cost measurement is used as the prediction target.
+
+The processed dataset is stored in:
+
+```text
+data/processed_data.mat
+```
 
 ## Preprocessing
 
@@ -91,12 +96,14 @@ The preprocessing pipeline includes:
 
 - Feature standardization
 - Removal of samples with negative metabolic-cost targets where required
-- Separation of the four feature configurations
-- Cross-validation during model evaluation
+- Separation into the four feature configurations
+- Cross-validation for model evaluation and selection
 
 ## Evaluation
 
-Model performance is primarily evaluated using **Mean Squared Error (MSE)**.
+Model performance is primarily evaluated using:
+
+**Mean Squared Error (MSE)**
 
 Cross-validation is used for model selection and performance estimation.
 
@@ -104,20 +111,52 @@ For the neural network, cross-validation is used to investigate different hidden
 
 For LASSO regression, cross-validation is used to select the regularization parameter.
 
-## Extension Results
+## Results
 
-The Random Forest model was evaluated on both subjects and all four feature configurations.
+The experimental results for all models are available in:
 
-Results are stored in:
+```text
+results/model_results.txt
+```
 
-`results/model_results.txt`
-
-The file contains results for:
+The results include:
 
 - LASSO Linear Regression
 - Neural Network
-- Feature Selection / PCA
-- Random Forest
+- Forward Stepwise Feature Selection
+- PCA
+- Random Forest Extension
+
+## Project Structure
+
+```text
+Metabolic-Cost-Prediction-ML-mini-project/
+│
+├── data/
+│   └── processed_data.mat
+│
+├── figures/
+│
+├── results/
+│   └── model_results.txt
+│
+├── src/
+│   ├── evaluation.py
+│   ├── feature_selection.py
+│   ├── linear_regression.py
+│   ├── load_data.py
+│   ├── neural_network.py
+│   ├── preprocessing.py
+│   ├── random_forest.py
+│   ├── run_feature_selection.py
+│   ├── run_linear.py
+│   ├── run_nn.py
+│   └── run_random_forest.py
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
 ## Technologies Used
 
@@ -125,27 +164,50 @@ The file contains results for:
 - **NumPy** — numerical computation
 - **SciPy** — loading MATLAB `.mat` data
 - **scikit-learn** — machine learning models and cross-validation
-- **Jupyter Notebook** — experimentation and analysis
 - **Git / GitHub** — version control and collaboration
 - **VS Code** — development environment
 
-## Project Organization
-
-The repository contains separate areas for:
-
-- Dataset files
-- Source code
-- Experiments and notebooks
-- Results
-- Figures
-
-The exact final folder structure may be updated as the project is combined between team members.
-
 ## Reproducibility
 
-The experiments can be reproduced using the Python scripts in the `src/` directory.
+Install the required Python packages:
 
-Example:
+```bash
+pip install -r requirements.txt
+```
+
+Run the individual experiments from the project root:
 
 ```bash
 python src/run_linear.py
+```
+
+```bash
+python src/run_nn.py
+```
+
+```bash
+python src/run_feature_selection.py
+```
+
+```bash
+python src/run_random_forest.py
+```
+
+The resulting model performance can be compared using the MSE values reported in:
+
+```text
+results/model_results.txt
+```
+
+## Team Contributions
+
+The project was developed collaboratively using separate Git branches.
+
+- **Person 1:** LASSO Linear Regression and Random Forest extension
+- **Person 2:** Neural Network reproduction, forward stepwise feature selection, and PCA
+
+The implementations were integrated into the `main` branch after review.
+
+## Academic Project
+
+This repository was developed as part of an ML mini-project based on the referenced CS229 paper.
