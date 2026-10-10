@@ -254,7 +254,7 @@ The feature-selection and PCA experiments explore ways to reduce the input dimen
 Clone the repository and enter the project directory:
 
 ```bash
-git clone https://github.com/<your-username>/Metabolic-Cost-Prediction-ML-mini-project.git
+git clone https://github.com/sharvanee08/Metabolic-Cost-Prediction-ML-mini-project.git
 cd Metabolic-Cost-Prediction-ML-mini-project
 ```
 
